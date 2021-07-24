@@ -27,22 +27,31 @@ class Ui_MainWindow(object):
         MainWindow.setLayoutDirection(QtCore.Qt.LeftToRight)
         MainWindow.setToolButtonStyle(QtCore.Qt.ToolButtonIconOnly)
 
+        # Layouts
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setObjectName("horizontalLayout")
+
+        # Text Inputs
         self.textEdit = QtWidgets.QTextEdit(self.centralwidget)
         self.textEdit.setObjectName("textEdit")
         self.horizontalLayout.addWidget(self.textEdit)
+
+        # Buttons
         self.button_search = QtWidgets.QPushButton(self.centralwidget)
         self.button_search.setObjectName("button_search")
         self.horizontalLayout.addWidget(self.button_search)
         self.verticalLayout.addLayout(self.horizontalLayout)
+
+        # Web view (map)
         self.webView = QWebEngineView()
         self.webView.setObjectName("webView")
         self.verticalLayout.addWidget(self.webView)
+
+        # Progress Bar
         self.progressBar = QtWidgets.QProgressBar(self.centralwidget)
         self.progressBar.setProperty("value", 24)
         self.progressBar.setObjectName("progressBar")
@@ -59,6 +68,7 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        # Map initialization
         m = folium.Map(tiles='Stamen Terrain', zoom_start=15, location=(-5.888947323651743, -35.21097641464734))
         data = io.BytesIO()
         m.save(data, close_file=False)
@@ -68,12 +78,14 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
+    # Names retranslate 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MapSearchApp"))
         self.button_search.setText(_translate("MainWindow", "Search"))
     
-    def loadMap():
+    # Load new map view
+    def loadMap(lat, lon, level):
         m = folium.Map(tiles='Stamen Terrain', zoom_start=15, location=(-5.888947323651743, -35.21097641464734))
         data = io.BytesIO()
         m.save(data, close_file=False)
