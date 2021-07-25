@@ -67,12 +67,19 @@ class Ui_MainWindow(object):
         self.statusbar = QtWidgets.QStatusBar(MainWindow)
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
-
+        # mapbox://styles/jpfcabral/ckrjeq9rj0lmg17qpi2gd46ak
+        # https://api.mapbox.com/styles/v1/jpfcabral/ckrjeq9rj0lmg17qpi2gd46ak.html?fresh=true&title=view&access_token=pk.eyJ1IjoianBmY2FicmFsIiwiYSI6ImNrcmo4ODVpejBpNmoybnFydnZ4aTBhajYifQ.XWYj4QQ5tXxiehs6ffR_Sg
         # Map initialization
-        m = folium.Map(tiles='Stamen Terrain', zoom_start=15, location=(-5.888947323651743, -35.21097641464734))
+        # m = folium.Map(tiles='Stamen Terrain', zoom_start=15, location=(-23.15441690888484, -50.940541830582795))
+        m = folium.Map( location=(-16.34466097568524, -47.88722737976218),
+                        zoom_start=20,
+                        tiles='https://api.mapbox.com/styles/v1/jpfcabral/ckrjeq9rj0lmg17qpi2gd46ak/tiles/256/{z}/{x}/{y}@2x?access_token=pk.eyJ1IjoianBmY2FicmFsIiwiYSI6ImNrcmo4ODVpejBpNmoybnFydnZ4aTBhajYifQ.XWYj4QQ5tXxiehs6ffR_Sg',
+                        attr='XXX Mapbox Attribution')
         data = io.BytesIO()
         m.save(data, close_file=False)
         self.webView.setHtml(data.getvalue().decode())
+        # self.webView.setHtml('https://www.google.com/maps/@-5.8850813,-35.2038551,15z')
+
 
 
         self.retranslateUi(MainWindow)
