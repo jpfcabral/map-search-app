@@ -26,41 +26,45 @@
    <enum>Qt::ToolButtonIconOnly</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
-   <layout class="QGridLayout" name="gridLayout_5">
+   <layout class="QGridLayout" name="gridLayout_3">
     <item row="0" column="0">
-     <layout class="QHBoxLayout" name="horizontalLayout" stretch="20,85">
+     <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="20,80">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout" stretch="25,25,40,10">
+       <layout class="QVBoxLayout" name="verticalLayout_4" stretch="15,15,60,10">
         <item>
          <widget class="QGroupBox" name="groupBox">
           <property name="title">
            <string>Address</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_4">
+          <layout class="QGridLayout" name="gridLayout">
            <item row="0" column="0">
-            <layout class="QGridLayout" name="gridLayout_2">
-             <item row="0" column="0" colspan="2">
+            <layout class="QVBoxLayout" name="verticalLayout" stretch="50,50">
+             <item>
               <widget class="QTextEdit" name="textEdit"/>
              </item>
-             <item row="1" column="0">
-              <spacer name="horizontalSpacer">
-               <property name="orientation">
-                <enum>Qt::Horizontal</enum>
-               </property>
-               <property name="sizeHint" stdset="0">
-                <size>
-                 <width>40</width>
-                 <height>20</height>
-                </size>
-               </property>
-              </spacer>
-             </item>
-             <item row="1" column="1">
-              <widget class="QPushButton" name="button_search_2">
-               <property name="text">
-                <string>Search</string>
-               </property>
-              </widget>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout" stretch="50,50">
+               <item>
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>88</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item>
+                <widget class="QPushButton" name="button_search_2">
+                 <property name="text">
+                  <string>Search</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
            </item>
@@ -72,25 +76,29 @@
           <property name="title">
            <string>Radius</string>
           </property>
-          <layout class="QGridLayout" name="gridLayout_3">
+          <layout class="QGridLayout" name="gridLayout_2">
            <item row="0" column="0">
-            <layout class="QGridLayout" name="gridLayout">
-             <item row="0" column="0" colspan="2">
+            <layout class="QVBoxLayout" name="verticalLayout_2">
+             <item>
               <widget class="QSlider" name="horizontalSlider">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
               </widget>
              </item>
-             <item row="1" column="0">
-              <widget class="QLCDNumber" name="lcdNumber"/>
-             </item>
-             <item row="1" column="1">
-              <widget class="QPushButton" name="pushButton">
-               <property name="text">
-                <string>Set</string>
-               </property>
-              </widget>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_2">
+               <item>
+                <widget class="QLCDNumber" name="lcdNumber"/>
+               </item>
+               <item>
+                <widget class="QPushButton" name="pushButton">
+                 <property name="text">
+                  <string>Set</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </item>
             </layout>
            </item>
@@ -98,10 +106,20 @@
          </widget>
         </item>
         <item>
-         <widget class="QListView" name="listView"/>
+         <spacer name="verticalSpacer">
+          <property name="orientation">
+           <enum>Qt::Vertical</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>214</width>
+            <height>338</height>
+           </size>
+          </property>
+         </spacer>
         </item>
         <item>
-         <widget class="QPushButton" name="button_search">
+         <widget class="QPushButton" name="run">
           <property name="text">
            <string>Run</string>
           </property>
@@ -110,7 +128,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_2" stretch="93,7">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="95,5">
         <item>
          <widget class="QWebView" name="webView">
           <property name="url">
