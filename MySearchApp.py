@@ -13,7 +13,8 @@ import sys
 import io
 from PyQt5 import QtCore, QtGui, QtWidgets
 from PyQt5.QtWebEngineWidgets import QWebEngineView 
-from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout
+from PyQt5.QtWidgets import QApplication, QWidget, QHBoxLayout, QVBoxLayout, QPushButton, QToolButton
+from GeoSearch import GeoSearcher
 
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
@@ -47,8 +48,11 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         spacerItem = QtWidgets.QSpacerItem(88, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.horizontalLayout.addItem(spacerItem)
+
         self.button_search_2 = QtWidgets.QPushButton(self.groupBox)
         self.button_search_2.setObjectName("button_search_2")
+        self.button_search_2.clicked.connect(self.search_button_clicked)
+
         self.horizontalLayout.addWidget(self.button_search_2)
         self.horizontalLayout.setStretch(0, 50)
         self.horizontalLayout.setStretch(1, 50)
@@ -113,6 +117,9 @@ class Ui_MainWindow(object):
         self.statusbar.setObjectName("statusbar")
         MainWindow.setStatusBar(self.statusbar)
 
+        # Inicialização da ferramenta de busca
+        self.geocoord = GeoSearcher()
+
         m = folium.Map(tiles='Stamen Terrain', zoom_start=15, location=(-5.888947323651743, -35.21097641464734))
         data = io.BytesIO()
         m.save(data, close_file=False)
@@ -120,6 +127,21 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
+
+
+    def search_button_clicked(self):
+        address = self.textEdit.toPlainText()
+        print(address)
+        lat, lon = self.geocoord.find(address=address)
+        print(lat, lon)
+        self.load_map(lat, lon)
+
+    
+    def load_map(self, lat, lon, zoom=15):
+        m = folium.Map(tiles='Stamen Terrain', zoom_start=zoom, location=(lat, lon))
+        data = io.BytesIO()
+        m.save(data, close_file=False)
+        self.webView.setHtml(data.getvalue().decode())
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
