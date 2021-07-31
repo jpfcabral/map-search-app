@@ -18,6 +18,7 @@ class Ui(QtWidgets.QMainWindow):
         self.settings_ui = uic.loadUi('settings.ui')
 
         self.main_ui.searchButton.clicked.connect(self.search_button_clicked)
+        self.main_ui.actionSettings.triggered.connect(self.open_settings)
 
         self.load_map(-5.888947323651743, -35.21097641464734)
         self.geocoord = GeoSearcher()
@@ -38,6 +39,10 @@ class Ui(QtWidgets.QMainWindow):
         data = io.BytesIO()
         m.save(data, close_file=False)
         self.main_ui.mapWidget.setHtml(data.getvalue().decode())
+
+    
+    def open_settings(self):
+        self.settings_ui.show()
 
 
 def main():
