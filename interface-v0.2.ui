@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1120</width>
-    <height>695</height>
+    <width>838</width>
+    <height>595</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -30,9 +30,9 @@
     <item row="0" column="0">
      <layout class="QHBoxLayout" name="horizontalLayout_3" stretch="20,80">
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_4" stretch="15,15,60,10">
+       <layout class="QVBoxLayout" name="dashboardVerticalLayout" stretch="15,15,60,10">
         <item>
-         <widget class="QGroupBox" name="groupBox">
+         <widget class="QGroupBox" name="addressGroupBox">
           <property name="title">
            <string>Address</string>
           </property>
@@ -40,12 +40,12 @@
            <item row="0" column="0">
             <layout class="QVBoxLayout" name="verticalLayout" stretch="50,50">
              <item>
-              <widget class="QTextEdit" name="textEdit"/>
+              <widget class="QTextEdit" name="addressTextEdit"/>
              </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout" stretch="50,50">
                <item>
-                <spacer name="horizontalSpacer">
+                <spacer name="addressHorizontalSpacer">
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -58,7 +58,7 @@
                 </spacer>
                </item>
                <item>
-                <widget class="QPushButton" name="button_search_2">
+                <widget class="QPushButton" name="searchButton">
                  <property name="text">
                   <string>Search</string>
                  </property>
@@ -72,7 +72,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QGroupBox" name="groupBox_2">
+         <widget class="QGroupBox" name="radiusGroupBox">
           <property name="title">
            <string>Radius</string>
           </property>
@@ -80,7 +80,7 @@
            <item row="0" column="0">
             <layout class="QVBoxLayout" name="verticalLayout_2">
              <item>
-              <widget class="QSlider" name="horizontalSlider">
+              <widget class="QSlider" name="radiusHorizontalSlider">
                <property name="orientation">
                 <enum>Qt::Horizontal</enum>
                </property>
@@ -89,10 +89,10 @@
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_2">
                <item>
-                <widget class="QLCDNumber" name="lcdNumber"/>
+                <widget class="QLCDNumber" name="radiusLcdNumber"/>
                </item>
                <item>
-                <widget class="QPushButton" name="pushButton">
+                <widget class="QPushButton" name="setRadiusButton">
                  <property name="text">
                   <string>Set</string>
                  </property>
@@ -128,15 +128,9 @@
        </layout>
       </item>
       <item>
-       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="95,5">
+       <layout class="QVBoxLayout" name="verticalLayout_3" stretch="0,5">
         <item>
-         <widget class="QWebView" name="webView">
-          <property name="url">
-           <url>
-            <string>about:blank</string>
-           </url>
-          </property>
-         </widget>
+         <widget class="QWebEngineView" name="mapWidget" native="true"/>
         </item>
         <item>
          <widget class="QProgressBar" name="progressBar">
@@ -156,18 +150,37 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1120</width>
+     <width>838</width>
      <height>22</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionSettings"/>
+    <addaction name="actionExit"/>
+   </widget>
+   <addaction name="menuFile"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionSettings">
+   <property name="text">
+    <string>Settings</string>
+   </property>
+  </action>
+  <action name="actionExit">
+   <property name="text">
+    <string>Exit</string>
+   </property>
+  </action>
  </widget>
  <customwidgets>
   <customwidget>
-   <class>QWebView</class>
+   <class>QWebEngineView</class>
    <extends>QWidget</extends>
-   <header location="global">QtWebKitWidgets/QWebView</header>
+   <header>PyQt5.QtWebEngineWidgets</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources/>
